@@ -35,10 +35,10 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $booking->name }}</td>
                                 <td>{{ $booking->room_number }}</td>
-                                <td>$ {{ $booking->bookingDetail->price }} </td>
-                                <td>{{ $booking->bookingDetail->check_in_date }}</td>
-                                <td>{{ $booking->bookingDetail->check_out_date }}</td>
-                                <td>{{ $booking->bookingDetail->booking_date }}</td>
+                                <td>$ {{ $booking->bookingDetail?->price ?? 0 }} </td>
+                                <td>{{ $booking->bookingDetail?->check_in_date ?? '' }}</td>
+                                <td>{{ $booking->bookingDetail?->check_out_date ?? '' }}</td>
+                                <td>{{ $booking->bookingDetail?->booking_date ?? '' }}</td>
                                 <td>
                                     <div class='action'>
                                         <a href="{{ route('booking.show', $booking->id) }}"

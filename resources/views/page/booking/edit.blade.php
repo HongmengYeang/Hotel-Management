@@ -47,19 +47,19 @@
                     <div class="form-group full-width">
                         <label for="check_in_date">Check-in Date</label>
                         <input type="datetime-local" id="check_in_date" name="check_in_date"
-                            value="{{ date('Y-m-d\TH:i', strtotime($booking->check_in_date)) }}" required>
+                            value="{{ date('Y-m-d\TH:i', strtotime($booking->bookingDetail->check_in_date)) }}" required>
                     </div>
 
                     <div class="form-group full-width">
                         <label for="check_out_date">Check-out Date</label>
                         <input type="datetime-local" id="check_out_date" name="check_out_date"
-                            value="{{ date('Y-m-d\TH:i', strtotime($booking->check_out_date)) }}" required>
+                            value="{{ date('Y-m-d\TH:i', strtotime($booking->bookingDetail->check_out_date)) }}" required>
                     </div>
 
                     <div class="form-group full-width">
                         <label for="booking_date">Booking Date</label>
                         <input type="datetime-local" id="booking_date" name="booking_date"
-                            value="{{ date('Y-m-d\TH:i', strtotime($booking->booking_date)) }}" required>
+                            value="{{ date('Y-m-d\TH:i', strtotime($booking->bookingDetail->booking_date)) }}" required>
                     </div>
 
                     <div class="form-group full-width">
@@ -71,14 +71,13 @@
                         <label for="service">Add Service</label>
                         <div class="flex items-center gap-2 ">
                             <select id="service" name="service">
-                                <option value="" disabled selected>-- Please select service --</option>
+                                {{-- <option value="" disabled selected>-- Please select service --</option> --}}
                                 @foreach ($services as $index => $service)
                                     <option value="{{ $service->id }}" data-service='@json($service)'>
                                         {{ $service->service_name }}
                                     </option>
                                 @endforeach
                             </select>
-
                             <button style="margin:0px !important;" type="button" id="add_service">
                                 +
                             </button>

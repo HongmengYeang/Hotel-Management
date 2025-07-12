@@ -65,7 +65,7 @@
                     <div class="form-group full-width">
                         <label for="service">Add Service</label>
                         <div class="flex items-center gap-2 ">
-                            <select id="service" name="service" required>
+                            <select id="service" name="service">
                                 <option value="" disabled selected>-- Please select service --</option>
                                 @foreach ($services as $index => $service)
                                     <option value="{{ $service->id }}" data-service='@json($service)'>
@@ -185,7 +185,7 @@
                             <input type="hidden" name="services[]" value="${serviceId}">
                             <input type="hidden" name="quantities[${serviceId}]" value="1" class="qty-input">
                         </td>
-                        <td>${serviceData.description ?? '' }</td>
+                        <td>${serviceData.description}</td>
                         <td><button type="button" class="remove-btn" data-id="${serviceId}" style="margin-top: 0px;padding: 10px 20px;">✖</button></td>
                     `;
                 serviceTableBody.appendChild(row);

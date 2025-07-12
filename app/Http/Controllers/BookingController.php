@@ -50,13 +50,13 @@ class BookingController extends Controller
         $quantities = $request->input("quantities", []);
         $payment_amount = $request->input("payment", 0);
 
-        
+        // ✅ Create booking
         $data = [
             "customer_id" => $request->input("customer_id"),
             "room_id" => $request->input("room_id"),
         ];
         $booking = Booking::create($data);
-        
+        // ✅ Create booking detail
         if (!$booking) {
             return redirect()->back()->withErrors(['error' => 'Failed to create booking']);
         }
@@ -123,12 +123,14 @@ class BookingController extends Controller
      */
     public function edit(string $id)
     {
-        $booking = Booking::with("customer", "services", "payments")->where("id", $id)->first();
+        $booking = Booking::with('bookingDetail',"customer", "services", "payments")->where("id", $id)->first();
+        
         // dd($booking);
         $rooms = Room::all();
         $services = Service::all();
         $customers = Customer::all();
         return view("page.booking.edit", compact("booking", 'rooms', 'services', 'customers'));
+        
     }
 
     /**
